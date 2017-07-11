@@ -20,20 +20,20 @@ class kafka::mirror::config(
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  if $consumer_config['group.id'] == '' {
-    fail('[Consumer] You need to specify a value for group.id')
+  if $consumer_config['group_id'] == '' {
+    fail('[Consumer] You need to specify a value for group_id')
   }
-  if $consumer_config['zookeeper.connect'] == '' {
-    fail('[Consumer] You need to specify a value for zookeeper.connect')
+  if $consumer_config['zookeeper_connect'] == '' {
+    fail('[Consumer] You need to specify a value for zookeeper_connect')
   }
 
   if versioncmp($kafka::version, '0.9.0.0') < 0 {
-    if $producer_config['metadata.broker.list'] == '' {
-      fail('[Producer] You need to specify a value for metadata.broker.list')
+    if $producer_config['metadata_broker_list'] == '' {
+      fail('[Producer] You need to specify a value for metadata_broker_list')
     }
   } else {
-    if $producer_config['bootstrap.servers'] == '' {
-      fail('[Producer] You need to specify a value for bootstrap.servers')
+    if $producer_config['bootstrap_servers'] == '' {
+      fail('[Producer] You need to specify a value for bootstrap_servers')
     }
   }
 

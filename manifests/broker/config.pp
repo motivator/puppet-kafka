@@ -22,7 +22,7 @@ class kafka::broker::config(
 
   $version = $kafka::version
   if $version and versioncmp($version, '0.9.0.0') < 0 {
-    if $config['broker.id'] == '-1' {
+    if $config['broker_id'] == '-1' {
       fail('[Broker] You need to specify a value for broker.id')
     }
   }

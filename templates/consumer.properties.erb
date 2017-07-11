@@ -3,6 +3,6 @@
 # See: http://kafka.apache.org/documentation.html#consumerconfigs for more details
 <% @consumer_config.sort.each do |k,v| -%>
 <% unless v.to_s.strip.empty? -%>
-<%= k %>=<%= v.is_a?(Array) ? v.join(',') : v %>
+<%= k.gsub(/_/, ".") %>=<%= v.is_a?(Array) ? v.join(',') : v %>
 <% end -%>
 <% end -%>
