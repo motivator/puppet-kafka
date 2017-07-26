@@ -66,7 +66,7 @@ PGREP_PATTERN=kafka.connect.cli.ConnectDistributed
 DAEMON="/opt/kafka/bin/connect-distributed.sh"
 DAEMON_OPTS="/opt/kafka/config/connect-distributed.properties"
 
-export KAFKA_HEAP_OPTS="-Xmx<%= @max_heap -%> -Xms<%= @max_heap -%>"
+export KAFKA_HEAP_OPTS="<%= @heap_opts %>"
 export KAFKA_JMX_OPTS="<%= @connect_jmx_opts %>"
 export KAFKA_LOG4J_OPTS="<%= @connect_log4j_opts %>"
 <%- end -%>
