@@ -59,6 +59,16 @@ PRODUCER_INPUT="<%= @input %>"
 
 export KAFKA_JMX_OPTS="<%= @producer_jmx_opts %>"
 export KAFKA_LOG4J_OPTS="<%= @producer_log4j_opts %>"
+
+<%- when 'kafka-connect-distributed' -%>
+PGREP_PATTERN=kafka.connect.cli.ConnectDistributed
+
+DAEMON="/opt/kafka/bin/connect-distributed.sh"
+DAEMON_OPTS="/opt/kafka/config/connect-distributed.properties"
+
+export KAFKA_HEAP_OPTS="-Xmx<%= @max_heap -%> -Xms<%= @max_heap -%>"
+export KAFKA_JMX_OPTS="<%= @connect_jmx_opts %>"
+export KAFKA_LOG4J_OPTS="<%= @connect_log4j_opts %>"
 <%- end -%>
 
 if [ -f /etc/default/kafka ]; then
