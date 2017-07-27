@@ -10,13 +10,14 @@ class kafka::connect::service(
   $jmx_opts                   = $kafka::connect::jmx_opts,
   $log4j_opts                 = $kafka::connect::log4j_opts,
   $heap_opts                  = $kafka::connect::heap_opts,
+  $mode                       = $kafka::connect::mode,
 ) {
 
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  $service_name = 'kafka-connect-distributed'
+  $service_name = "kafka-connect-${mode}"
 
   if $service_install {
     if $::service_provider == 'systemd' {

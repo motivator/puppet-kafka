@@ -59,6 +59,7 @@ class kafka::connect (
   $log4j_opts                 = $kafka::params::connect_log4j_opts,
   $group_id                   = $kafka::params::group_id,
   $user_id                    = $kafka::params::user_id,
+  $mode                       = $kafka::params::connect_mode,
 ) inherits kafka::params {
 
   validate_re($::osfamily, 'RedHat|Debian\b', "${::operatingsystem} not supported")

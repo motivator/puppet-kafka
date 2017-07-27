@@ -314,15 +314,20 @@ class kafka::params {
   }
 
   #https://kafka.apache.org/documentation/#connectconfigs
-  $connect_config_defauls = {
+  $connect_mode = 'distributed'
+  $connect_config_defaults = {
     'config.storage.topic'                      => '',
     'group.id'                                  => '',
     'key.converter'                             => '',
+    'key.converter.schemas.enable'              => false,
     'offset.storage.topic'                      => '',
     'status.storage.topic'                      => '',
     'value.converter'                           => '',
-    'internal.key.converter'                    => '',
-    'internal.value.converter'                  => '',
+    'value.converter.schemas.enable'            => false,
+    'internal.key.converter'                    => 'org.apache.kafka.connect.json.JsonConverter',
+    'internal.key.converter.schemas.enable'     => false,
+    'internal.value.converter'                  => 'org.apache.kafka.connect.json.JsonConverter',
+    'internal.value.converter.schemas.enable'   => false,
     'bootstrap.servers'                         => 'localhost:9092',
     'heartbeat.interval.ms'                     => 3000,
     'rebalance.timeout.ms'                      => 60000,

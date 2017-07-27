@@ -1,6 +1,6 @@
-# == Class: kafka::broker::install
+# == Class: kafka::connect::install
 #
-# This private class is meant to be called from `kafka::broker`.
+# This private class is meant to be called from `kafka::connect`.
 # It downloads the package and installs it.
 #
 class kafka::connect::install {
