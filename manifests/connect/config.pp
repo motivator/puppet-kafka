@@ -20,6 +20,10 @@ class kafka::connect::config(
     fatal('${connect_mode} must be one of "distributed" or "standalone"')
   }
 
+  if ($mode == 'standalone') {
+    fatal('standalone mode not supported yet.')
+  }
+
   $connect_config = deep_merge($config_defaults, $config)
   $service_name = "kafka-connect-${mode}"
 
