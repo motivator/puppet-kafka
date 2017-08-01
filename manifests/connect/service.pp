@@ -10,6 +10,7 @@ class kafka::connect::service(
   $jmx_opts                   = $kafka::connect::jmx_opts,
   $log4j_opts                 = $kafka::connect::log4j_opts,
   $heap_opts                  = $kafka::connect::heap_opts,
+  $opts                       = $kafka::connect::opts,
   $mode                       = $kafka::connect::mode,
 ) {
 

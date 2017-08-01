@@ -57,6 +57,7 @@ class kafka::connect (
   $jmx_opts                   = $kafka::params::connect_jmx_opts,
   $heap_opts                  = $kafka::params::connect_heap_opts,
   $log4j_opts                 = $kafka::params::connect_log4j_opts,
+  $opts                       = $kafka::params::connect_opts,
   $group_id                   = $kafka::params::group_id,
   $user_id                    = $kafka::params::user_id,
   $mode                       = $kafka::params::connect_mode,

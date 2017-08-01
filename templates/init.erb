@@ -69,6 +69,8 @@ DAEMON_OPTS="/opt/kafka/config/<%= @service_name %>.properties"
 export KAFKA_HEAP_OPTS="<%= @heap_opts %>"
 export KAFKA_JMX_OPTS="<%= @connect_jmx_opts %>"
 export KAFKA_LOG4J_OPTS="<%= @connect_log4j_opts %>"
+
+export KAFKA_OPTS="<%= @opts %>"
 <%- end -%>
 
 if [ -f /etc/default/kafka ]; then
@@ -93,13 +95,11 @@ start() {
 
   <%- if @service_name == "kafka-connect-distributed" -%>
   /bin/su "$KAFKA_USER" -c "KAFKA_JMX_OPTS=\"$KAFKA_JMX_OPTS\" $DAEMON $DAEMON_OPTS >/dev/null 2>&1 &"
-
-  sleep 5
   <%- else -%>
   /bin/su "$KAFKA_USER" -c "KAFKA_JMX_OPTS=\"$KAFKA_JMX_OPTS\" $DAEMON $DAEMON_OPTS<%- if @service_name == 'kafka-producer' -%> $PRODUCER_INPUT<%- end -%> >/dev/null 2>&1 &"
+  <%- end -%>
 
   sleep 2
-  <%- end -%>
   PID=`pgrep -f "$PGREP_PATTERN"`
   if [ -z "$PID" ]; then
     echo "$NAME could not be started"

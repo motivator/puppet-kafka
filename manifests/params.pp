@@ -46,6 +46,7 @@ class kafka::params {
   $connect_jmx_opts = '-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false \
   -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=9994'
   $connect_log4j_opts = '-Dlog4j.configuration=file:/opt/kafka/config/connect-log4j.properties'
+  $connect_opts = ''
   $connect_service_install = true
   $connect_service_ensure = 'running'
 
