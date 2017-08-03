@@ -36,7 +36,7 @@ class kafka::connect::config(
     $config_notify = undef
   }
 
-  file { "/opt/kafka/config/${service_name}.properties":
+  file { "/opt/kafka/config/connect-${mode}.properties":
     ensure  => present,
     owner   => 'kafka',
     group   => 'kafka',
