@@ -61,6 +61,7 @@ class kafka::connect (
   $group_id                   = $kafka::params::group_id,
   $user_id                    = $kafka::params::user_id,
   $mode                       = $kafka::params::connect_mode,
+  $connector_config_files     = [],
 ) inherits kafka::params {
 
   validate_re($::osfamily, 'RedHat|Debian\b', "${::operatingsystem} not supported")
@@ -71,6 +72,7 @@ class kafka::connect (
   validate_bool($service_install)
   validate_re($service_ensure, '^(running|stopped)$')
   validate_bool($service_restart)
+  validate_array($connector_config_files)
 
   class { '::kafka::connect::install': } ->
   class { '::kafka::connect::config': } ->

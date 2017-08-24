@@ -60,6 +60,18 @@ PRODUCER_INPUT="<%= @input %>"
 export KAFKA_JMX_OPTS="<%= @producer_jmx_opts %>"
 export KAFKA_LOG4J_OPTS="<%= @producer_log4j_opts %>"
 
+<%- when 'kafka-connect-standalone' -%>
+PGREP_PATTERN=kafka.connect.cli.ConnectStandalone
+
+DAEMON="/opt/kafka/bin/connect-standalone.sh"
+DAEMON_OPTS="/opt/kafka/config/connect-standalone.properties <%= @connector_config_files.join(' ') %>"
+
+export KAFKA_HEAP_OPTS="<%= @heap_opts %>"
+export KAFKA_JMX_OPTS="<%= @connect_jmx_opts %>"
+export KAFKA_LOG4J_OPTS="<%= @connect_log4j_opts %>"
+
+export KAFKA_OPTS="<%= @opts %>"
+
 <%- when 'kafka-connect-distributed' -%>
 PGREP_PATTERN=kafka.connect.cli.ConnectDistributed
 

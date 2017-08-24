@@ -12,10 +12,17 @@ class kafka::connect::service(
   $heap_opts                  = $kafka::connect::heap_opts,
   $opts                       = $kafka::connect::opts,
   $mode                       = $kafka::connect::mode,
+  $connector_config_files     = $kafka::connect::connector_config_files,
 ) {
 
   if $caller_module_name != $module_name {
     fail("Use of private class ${name} by ${caller_module_name}")
+  }
+
+  if $mode == 'standalone' {
+    if empty($standalone_connector_configs) {
+      fail('must specify at least one connector configuration file in standalone mode')
+    }
   }
 
   $service_name = "kafka-connect-${mode}"
