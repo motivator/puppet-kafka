@@ -76,7 +76,7 @@ export KAFKA_OPTS="<%= @opts %>"
 PGREP_PATTERN=kafka.connect.cli.ConnectDistributed
 
 DAEMON="/opt/kafka/bin/connect-distributed.sh"
-DAEMON_OPTS="/opt/kafka/config/<%= @service_name %>.properties"
+DAEMON_OPTS="/opt/kafka/config/connect-distributed.properties"
 
 export KAFKA_HEAP_OPTS="<%= @heap_opts %>"
 export KAFKA_JMX_OPTS="<%= @connect_jmx_opts %>"

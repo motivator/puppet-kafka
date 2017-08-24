@@ -17,7 +17,7 @@ class kafka::connect::config(
   }
 
   if ! ($mode in ['distributed', 'standalone']) {
-    fatal('${connect_mode} must be one of "distributed" or "standalone"')
+    fail('${connect_mode} must be one of "distributed" or "standalone"')
   }
 
   $connect_config = deep_merge($config_defaults, $config)
