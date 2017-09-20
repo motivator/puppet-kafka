@@ -19,7 +19,13 @@ class kafka::connect::service(
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
+  # There's a lot more work to do here. Should probably wrap the unit/init file
+  # creation in a create_resources call.
+  #
+  # For now, only really support distributed mode
   if $mode == 'standalone' {
+    fail('standalone mode not supported yet')
+
     if empty($standalone_connector_configs) {
       fail('must specify at least one connector configuration file in standalone mode')
     }
